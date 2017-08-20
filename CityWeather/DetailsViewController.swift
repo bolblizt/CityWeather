@@ -49,8 +49,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             otherLabel.text = weatherCity.summary
         }
         
+        let tempMaxInt = Int(weatherCity.tempMax)
+        let tempMinInt = Int(weatherCity.tempMin)
         
-        let temperatureStr = "\(weatherCity.tempMax)°-\(weatherCity.tempMin)°"
+        let temperatureStr = "\(tempMaxInt)°C - \(tempMinInt)°C"
         let summaryStr = weatherCity.summary
         
         self.descriptLabel.text =  summaryStr
@@ -80,13 +82,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 1:
-            
-        default:
-            <#code#>
-        }
         
         return (self.detailsCellModel?.NumRows())!
     }

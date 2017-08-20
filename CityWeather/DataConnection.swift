@@ -28,17 +28,19 @@ class OpenWeather{
     var overLay:UIView!
     var citiesWeatherInfo:[WeatherInfo] = [WeatherInfo]()
     
-    init (CitiesID:[String:Int]){
+  
+
+    private init() {
+        
+       }
+    
+    static let sharedInstance = OpenWeather()
+
+    
+    func SetCities(CitiesID:[String:Int]){
         
         self.citiesID = CitiesID
     }
-
-    init() {
-        
-    }
-    
-    
-
    
     
     func isCitiesIDAvailable()->Bool{

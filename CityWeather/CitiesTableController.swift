@@ -26,14 +26,15 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
     func SetupViews(){
         let ausCities = ["Sydney":4163971, "Melbourne":2147714, "Brisbane":2174003]
         
-        let weatherConnect:OpenWeather = OpenWeather(CitiesID: ausCities)
+        let weatherConnect:OpenWeather = OpenWeather.sharedInstance
+        weatherConnect.SetCities(CitiesID: ausCities)
         weatherConnect.ProcessCityWeatherRequest()
-        //weatherConnect.GetDailyForecast(CityName: "Sydney")
-        weatherConnect.delegate = self
+                weatherConnect.delegate = self
+        
         
         DispatchQueue.main.async {
             self.title = "Weather®"
-            self.AddOverLay()
+            _ = self.AddOverLay()
             self.Overlay(start: true)
             
             
@@ -127,9 +128,10 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
         
         
         print("\(cityWeather.tempMax)")
-        let tempMax:String = String(describing: cityWeather.tempMax)
-        let tempMin:String = String(describing: cityWeather.tempMin)
-        cell?.detailTextLabel?.text =  "\(tempMax)°C - \(tempMin)°C"
+        let tempMaxInt = Int(cityWeather.tempMax)
+        let tempMinInt = Int(cityWeather.tempMin)
+        
+        cell?.detailTextLabel?.text =  "\(tempMaxInt)°C - \(tempMinInt)°C"
         
         if indexPath.row < (self.weatherList?.count)!{
              self.Overlay(start: false)
@@ -238,7 +240,7 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
         if let cityWeather = self.weatherList?[(index?.row)!]{
             
             self.selectedCity = cityWeather
-            let connectWeather = OpenWeather()
+            let connectWeather = OpenWeather.sharedInstance
                 connectWeather.delegate = self
              let queue = DispatchQueue(label: "com.Financial.ruler", qos: .utility)
             queue.async {

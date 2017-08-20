@@ -42,45 +42,7 @@ struct CitiesTableModel {
         self.sections = sections
     }
     
-    /*
-    func getCellLabel(index:IndexPath)->String{
-        
-        let dailyList = self.weather?.getForecast().getDailyDetails()
-        let hourDetail = dailyList?[index.row]
-        let celsius = self.weather?.FahrenheitToCelcious(fahrenheit: (hourDetail?.temperatureMax)!)
-        return  "\(celsius!)°C " + (self.weather?.getForecast().getConvertDate(currentDate: (hourDetail?.time)!, format: "EEEE, MMM d"))!
-    }
-    
-    
-    func getCellDetail(index:IndexPath)->String{
-        let dailyList = self.weather?.getForecast().getDailyDetails()
-        let hourDetail = dailyList?[index.row]
-        let tempStr = "\((hourDetail?.daySummary)!) "
-        return tempStr
-    }
-    
-    
-    func getCellImage(index:IndexPath)->UIImage{
-        
-        let dailyList = self.weather?.getForecast().getDailyDetails()
-        let hourDetail = dailyList?[index.row]
-        let tempStr = hourDetail?.icon
-        
-        return UIImage(named:tempStr!)!
-    }
- 
-    
-    func tableCell(index:IndexPath, tableView:UITableView)->UITableViewCell{
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dailyCell", for: index) as UITableViewCell
-        
-        cell.textLabel?.text = getCellLabel(index: index)
-        cell.detailTextLabel?.text = getCellDetail(index:index)
-        cell.imageView?.image = getCellImage(index: index)
-        return cell
-        
-    }
-    
+  
     
     func setLabel(descript:String, label:String, labelSize:CGFloat, descriptSize:CGFloat)->NSMutableAttributedString{
         let yourAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: labelSize)]
@@ -95,6 +57,6 @@ struct CitiesTableModel {
         combination.append(partTwo)
         
         return combination
-    }*/
+    }
 
 }

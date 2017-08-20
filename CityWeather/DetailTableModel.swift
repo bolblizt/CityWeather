@@ -55,7 +55,7 @@ class DetailTableModel: NSObject {
         
         if  let weather = self.dailyWeatherInfo?.weatherForcast[index.row] {
 
-             dateStr = weather.getConvertDate(currentDate: weather.dateStr, format: "EEE dd-MMM")
+             dateStr = weather.getConvertDate(currentDate: weather.dateStr, format: "EEE dd-MMM HH:mm")
            
         }
 
@@ -83,8 +83,10 @@ class DetailTableModel: NSObject {
         var temp:String?
     
         if  let weather = self.dailyWeatherInfo?.weatherForcast[index.row] {
-    
-            temp = "\(weather.tempMax)° - \(weather.tempMin)°"
+            
+            let tempMaxInt = Int(weather.tempMax)
+            let  tempMinInt = Int(weather.tempMin)
+            temp = "\(tempMaxInt)°C - \(tempMinInt)°C"
         }
     
     return temp!
@@ -98,18 +100,17 @@ class DetailTableModel: NSObject {
                 cell.imageIcon.image = self.GetWeatherImage(index: indexPath)
                 }
                 cell.dayLabel.text = self.GetDate(index: indexPath)
-                cell.tempLabel.text = self.GetTemperature(index: indexPath)
-                cell.descriptLabel.text = self.GetDescript(index: indexPath)
+                let tempStr = self.GetTemperature(index: indexPath)
+                cell.tempLabel.attributedText = self.setLabel(descript: tempStr, label: "", labelSize: 18.0, descriptSize: 19.0)
+                cell.descriptLabel.text =   self.GetDescript(index: indexPath)
         
         return cell
         
     }
     
     
-    func ProcessForcast(){
-        
-        self.dailyWeatherInfo?.weatherForcast.lazy.gro
-    }
+    
+   
     
     func setLabel(descript:String, label:String, labelSize:CGFloat, descriptSize:CGFloat)->NSMutableAttributedString{
         let yourAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: labelSize)]
