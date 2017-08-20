@@ -11,9 +11,6 @@ import Foundation
 
 struct WeatherInfo{
     
-    
-    //var latitude: String?
-    //var longitude:String?
     let tempMax: Float
     let tempMin:Float
     let description: String
@@ -25,22 +22,7 @@ struct WeatherInfo{
     let iconName:String
     let location: (latitude: Double, longitude: Double)
    
-   
- //  private var dailyWeather:DailyForecast?
-    
-    
-    /*
-     mutating func InitDailyWeather(weekWeather:DailyForecast){
-        
-        self.dailyWeather = weekWeather
-    }
-       func getForecast()->DailyForecast{
-    
-        return self.dailyWeather!
-    }
-     */
-    
-    
+
     func FahrenheitToCelcious(fahrenheit:Float)->String{
         let celsius:Float =  (fahrenheit - 32) * 5/9
         

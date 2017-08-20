@@ -32,7 +32,7 @@ class CityWeatherTests: XCTestCase {
         weatherConnect.SetCities(CitiesID: ausCities)
         weatherConnect.ProcessCityWeatherRequest()
          XCTAssertNotNil(weatherConnect.ProcessCityWeatherRequest())
-        //weatherConnect.delegate = self
+       
     }
     
     func testDailyForcast(){

@@ -17,36 +17,6 @@ struct DailyForecast{
     let country:String
     let location: (latitude: Double, longitude: Double)
     
-    /*
-    init(dailyList:[DailyDetails], hourlyList:[Hourly], dailyForcast:[WeatherInfo]) {
-        
-        self.dayDetails = dailyList
-        self.hourlyDetails = hourlyList
-        self.dailyForcast = dailyForcast
-
-    }
-    
-    
-     init(){
-        self.dayDetails = [DailyDetails]()
-        self.hourlyDetails = [Hourly]()
-        self.dailyForcast = [WeatherInfo]()
-        
-    }
- 
-    func getDailyForcast() ->[WeatherInfo]{
-        
-        return self.dailyForcast!
-    }
-
-    
-
-    func getDailyCount()->Int{
-        
-        return (self.dailyForcast?.count)!
-    }
-
-     */
 
     
    
@@ -69,7 +39,8 @@ struct DailyWeather{
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let yourDate = formatter.date(from: currentDate)
 
-        formatter.dateFormat = format//"EEEE, MMM d, yyyy"
+        formatter.dateFormat = format
+        //"EEEE, MMM d, yyyy"
         // again convert your date to string
         let dateString = formatter.string(from: yourDate!)
         
@@ -78,25 +49,6 @@ struct DailyWeather{
     }
     
 
-    
-}
-
-struct DailyDetails {
-    var daySummary:String?
-    var temperatureMin:Float
-    var temperatureMax:Float
-    var icon:String?
-    var time:Date?
-    
-    
-    init() {
-        
-       // self.daySummary = ""
-        self.temperatureMax = 0.00
-        self.temperatureMin = 0.00
-       // self.icon = ""
-    }
-    
     
 }
 

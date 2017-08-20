@@ -20,13 +20,13 @@ class DetailTableModel: NSObject {
         
     }
 
-    
+    //MARK: Table methods Get Methods
     func GetCityWeatherInfo()->WeatherInfo{
         
         return self.cityWeatherInfo!
     }
     
-    //MARK: Table methods
+    
     func NumRows()-> Int{
         
         return (self.dailyWeatherInfo?.weatherForcast.count)!
@@ -40,8 +40,6 @@ class DetailTableModel: NSObject {
         if  let weather = self.dailyWeatherInfo?.weatherForcast[index.row] {
           
                  imageIcon =  UIImage(named: weather.iconName)
-        
-           
         }
         
         
@@ -93,6 +91,7 @@ class DetailTableModel: NSObject {
     
     }
     
+    //MARK: TableViewCell
     func SetTableViewCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:DetailsTableCell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DetailsTableCell
@@ -111,7 +110,7 @@ class DetailTableModel: NSObject {
     
     
    
-    
+    //MARK: Custom Label String
     func setLabel(descript:String, label:String, labelSize:CGFloat, descriptSize:CGFloat)->NSMutableAttributedString{
         let yourAttributes = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: labelSize)]
         let yourOtherAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont.systemFont(ofSize: descriptSize)]
