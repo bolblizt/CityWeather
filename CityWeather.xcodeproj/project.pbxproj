@@ -129,14 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				0CBED87E1F4704460034153A /* AppDelegate.swift */,
-				0CBED8B21F470DED0034153A /* DailyForecast.swift */,
-				0CBED8B01F470DC60034153A /* WeatherInfo.swift */,
-				0CBED8AE1F470A840034153A /* DataConnection.swift */,
 				0CBED8AC1F47048C0034153A /* CitiesTableController.swift */,
 				0CBED8B61F480C260034153A /* CitiesTableModel.swift */,
 				0CBED8B41F470E670034153A /* DetailsViewController.swift */,
 				0CBED8BA1F4943830034153A /* DetailTableModel.swift */,
 				0CBED8B81F49356A0034153A /* DetailsTableCell.swift */,
+				0CBED8BC1F49C47C0034153A /* New Group */,
 				0CBED8821F4704460034153A /* Main.storyboard */,
 				0CBED8851F4704460034153A /* Assets.xcassets */,
 				0CBED8871F4704460034153A /* LaunchScreen.storyboard */,
@@ -161,6 +159,16 @@
 				0CBED8A01F4704470034153A /* Info.plist */,
 			);
 			path = CityWeatherUITests;
+			sourceTree = "<group>";
+		};
+		0CBED8BC1F49C47C0034153A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				0CBED8B21F470DED0034153A /* DailyForecast.swift */,
+				0CBED8B01F470DC60034153A /* WeatherInfo.swift */,
+				0CBED8AE1F470A840034153A /* DataConnection.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		36885D44A8C563DA5333B915 /* Pods */ = {

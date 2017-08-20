@@ -126,12 +126,22 @@ class OpenWeather{
                 }
                 
             case .failure(let error):
-                print(error)
+                // do something with error
+                let errorStr = error.localizedDescription
+                
+                    let userDict:[String:String] = ["errorMsg":errorStr]
+                    let nc = NotificationCenter.default
+                    nc.post(name: Notification.Name(rawValue: "errorFetching"), object: userDict)
+                
+                
             }
         }
         
         
     }
+    
+   
+
 
     //MARK: City Daily Forecast
     func GetDailyForecast(CityName:String){
@@ -162,7 +172,10 @@ class OpenWeather{
                 }
                 
             case .failure(let error):
-                print(error)
+                // do something with error
+                let userDict:[String:String] = ["errorMsg":error.localizedDescription]
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name(rawValue: "errorFetching"), object: userDict)
             }
         }
 
@@ -197,6 +210,7 @@ class OpenWeather{
 
 
 //MARK: - Init for WeatherInfo
+
 
 extension WeatherInfo {
     
@@ -241,6 +255,8 @@ extension WeatherInfo {
     }
     
 }
+
+
 
 
 extension DailyForecast{
@@ -303,6 +319,9 @@ extension DailyForecast{
 
         
     }
+    
+    
+    
 
     
 }

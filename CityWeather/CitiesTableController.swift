@@ -18,13 +18,18 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(CitiesTableController.AlertMsg), name: NSNotification.Name(rawValue: "errorFetching"), object: nil)
         self.SetupViews()
         
     }
 
     //MARK: - ViewSetup
     func SetupViews(){
+        
+        
+        
         let ausCities = ["Sydney":4163971, "Melbourne":2147714, "Brisbane":2174003]
+       //  let ausCities = ["Sydney":000000, "Melbourne":9999999, "Brisbane":777777]
         
         let weatherConnect:OpenWeather = OpenWeather.sharedInstance
         weatherConnect.SetCities(CitiesID: ausCities)
@@ -231,7 +236,7 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
     }
     
     
-    //Mark: - 
+    //Mark: - DailyForcast
     
     func GetDailyForcast(){
         
@@ -250,6 +255,31 @@ class CitiesTableController: UITableViewController, OpenWeatherDelegate {
             
         }
         
+    }
+    
+    //MARK: Error Alert MSG
+    func AlertMsg(_ notification:Notification){
+        
+        var errorMessage:String = "An Error has occured while getting the weather data. Please try again."
+         if let myDict = (notification as NSNotification).userInfo  {
+            errorMessage = myDict["errorMsg"] as! String
+        }
+        
+            
+            let alertView = UIAlertController(title: "Weather®", message: "ERROR: \(errorMessage).", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                print("OK")
+                self.Overlay(start: false)
+            }
+            alertView.addAction(okAction)
+            self.present(alertView, animated: true, completion: nil)
+        
+        
+        DispatchQueue.main.async {
+            self.Overlay(start: false)
+        }
         
         
     }

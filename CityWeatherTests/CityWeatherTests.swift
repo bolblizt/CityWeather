@@ -21,10 +21,33 @@ class CityWeatherTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    
+    
+    func testInit(){
+        
+        let ausCities = ["Sydney":4163971, "Melbourne":2147714, "Brisbane":2174003]
+        
+        let weatherConnect:OpenWeather = OpenWeather.sharedInstance
+        weatherConnect.SetCities(CitiesID: ausCities)
+        weatherConnect.ProcessCityWeatherRequest()
+         XCTAssertNotNil(weatherConnect.ProcessCityWeatherRequest())
+        //weatherConnect.delegate = self
     }
+    
+    func testDailyForcast(){
+        
+         let weatherConnect:OpenWeather = OpenWeather.sharedInstance
+         XCTAssertNotNil(weatherConnect.GetDailyForecast(CityName:"Sydney"))
+        
+    }
+    
+    func testSharedInstance(){
+        
+        let openWeather = OpenWeather.sharedInstance
+        XCTAssertNotNil(openWeather)
+    }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
